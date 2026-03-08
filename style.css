@@ -1,1 +1,96 @@
-/* Add styles here */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --background-color: #f0f2f5;
+    --container-bg: #ffffff;
+    --primary-color: #4a90e2;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glow-color: rgba(74, 144, 226, 0.5);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: var(--container-bg);
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px var(--shadow-color), 0 6px 6px var(--shadow-color);
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.lotto-numbers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.lotto-ball {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: pop-in 0.5s ease-out forwards;
+}
+
+.generate-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--glow-color);
+}
+
+.generate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--glow-color);
+}
+
+.generate-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px var(--glow-color);
+}
+
+@keyframes pop-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
