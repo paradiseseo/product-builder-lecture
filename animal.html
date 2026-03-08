@@ -192,13 +192,18 @@
                 const classDiv = document.createElement("div");
                 classDiv.className = "result-bar-container";
                 classDiv.innerHTML = `
-                    <div class="result-bar-fill" style="width: ${probability}%;"></div>
+                    <div class="result-bar-fill" style="width: 0%;"></div>
                     <div class="result-text">
                         <span>${prediction[i].className}</span>
                         <span>${probability}%</span>
                     </div>
                 `;
                 labelContainer.appendChild(classDiv);
+
+                // Trigger animation after adding to DOM
+                setTimeout(() => {
+                    classDiv.querySelector('.result-bar-fill').style.width = `${probability}%`;
+                }, 50);
             }
         }
 
