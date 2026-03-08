@@ -52,18 +52,33 @@
             width: 100%;
             margin-top: 1rem;
         }
-        #label-container div {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 0.5rem 0;
-            padding: 0.8rem 1rem;
+        .result-bar-container {
+            margin: 0.8rem 0;
             background: var(--background-color);
             border-radius: 10px;
             border: 1px solid var(--input-border);
-            color: var(--text-color);
+            overflow: hidden;
+            position: relative;
+        }
+        .result-bar-fill {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--glow-color);
+            z-index: 0;
+            transition: width 0.8s ease-out;
+        }
+        .result-text {
+            position: relative;
+            z-index: 1;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0.8rem 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-color);
         }
         .nav-link {
             display: inline-block;
@@ -175,7 +190,14 @@
             for (let i = 0; i < maxPredictions; i++) {
                 const probability = Math.round(prediction[i].probability * 100);
                 const classDiv = document.createElement("div");
-                classDiv.innerHTML = `<span>${prediction[i].className}</span><span>${probability}%</span>`;
+                classDiv.className = "result-bar-container";
+                classDiv.innerHTML = `
+                    <div class="result-bar-fill" style="width: ${probability}%;"></div>
+                    <div class="result-text">
+                        <span>${prediction[i].className}</span>
+                        <span>${probability}%</span>
+                    </div>
+                `;
                 labelContainer.appendChild(classDiv);
             }
         }
