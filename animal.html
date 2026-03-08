@@ -200,10 +200,11 @@
                 `;
                 labelContainer.appendChild(classDiv);
 
-                // Trigger animation after adding to DOM
-                setTimeout(() => {
-                    classDiv.querySelector('.result-bar-fill').style.width = `${probability}%`;
-                }, 50);
+                // Force browser reflow to apply the 0% width first
+                classDiv.offsetWidth;
+
+                // Apply the target width to trigger the CSS transition
+                classDiv.querySelector('.result-bar-fill').style.width = `${probability}%`;
             }
         }
 
