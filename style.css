@@ -7,6 +7,7 @@
     --text-color: #333;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --glow-color: rgba(74, 144, 226, 0.5);
+    --input-border: #ddd;
 }
 
 body.dark-mode {
@@ -16,6 +17,7 @@ body.dark-mode {
     --text-color: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.5);
     --glow-color: rgba(74, 144, 226, 0.2);
+    --input-border: #444;
 }
 
 body {
@@ -23,10 +25,13 @@ body {
     background-color: var(--background-color);
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
 .container {
@@ -38,12 +43,77 @@ body {
     max-width: 400px;
     width: 90%;
     position: relative;
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-h1 {
+h1, h2 {
     color: var(--text-color);
     font-weight: 600;
     margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.partnership-container {
+    padding: 2rem;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--glow-color);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--glow-color);
 }
 
 .theme-toggle {
